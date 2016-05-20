@@ -29,6 +29,13 @@ app.post('/', function(req, res, next) {
     error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
   })
   
+  pubnub.subscribe({
+    channel  : "fromMusicService",
+    callback : function(message) {
+        res.send('message')
+    }
+})
+  
   // things are always good
   res.send(200)
   return next()
