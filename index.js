@@ -32,6 +32,7 @@ app.post('/', function(req, res, next) {
   pubnub.subscribe({
     channel  : "fromMusicService",
     callback : function(message) {
+        console.log('message from music service: ', message)
         res.send('message')
     }
 })
