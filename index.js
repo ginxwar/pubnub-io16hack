@@ -33,12 +33,12 @@ app.post('/', function(req, res, next) {
     channel  : "fromMusicService",
     callback : function(message) {
         console.log('message from music service: ', message)
-        res.send('message')
+        res.send(message)
     }
 })
   
-  // things are always good
-  res.send(200)
+ 
+//   res.send(200)
   return next()
 })
 
