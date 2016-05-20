@@ -31,17 +31,13 @@ app.post('/', function(req, res, next) {
         callback : function(message) {
             console.log('message from music service: ', message)
             res.status(200).send(message)
+            return next()
         }
       })
     },
     error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
   })
   
-  
-  
- 
-//   res.send(200)
-  return next()
 })
 
 
