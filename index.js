@@ -25,17 +25,19 @@ app.post('/', function(req, res, next) {
   pubnub.publish({ 
     channel   : 'fromAmazonEcho',
     message   : req.body,
-    callback  : function(e) { console.log( "SUCCESS!", e ); },
+    callback  : function(e) { 
+      pubnub.subscribe({
+        channel  : "fromMusicService",
+        callback : function(message) {
+            console.log('message from music service: ', message)
+            res.status(200).send(message)
+        }
+      })
+    },
     error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
   })
   
-  pubnub.subscribe({
-    channel  : "fromMusicService",
-    callback : function(message) {
-        console.log('message from music service: ', message)
-        res.status(200).send(message)
-    }
-})
+  
   
  
 //   res.send(200)
