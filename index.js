@@ -25,7 +25,7 @@ app.post('/', function(req, res, next) {
   pubnub.publish({ 
     channel   : 'fromAmazonEcho',
     message   : req.body,
-    callback  : function(e) { 
+    callback  : function(e) {  
       pubnub.subscribe({
         channel  : "fromMusicService",
         callback : function(message) {
