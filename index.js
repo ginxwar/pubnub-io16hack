@@ -23,7 +23,7 @@ app.use(bodyParser.json())
 app.post('/', function(req, res, next) {
   
   pubnub.publish({ 
-    channel   : 'amazonEcho',
+    channel   : 'fromAmazonEcho',
     message   : req.body,
     callback  : function(e) { console.log( "SUCCESS!", e ); },
     error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
